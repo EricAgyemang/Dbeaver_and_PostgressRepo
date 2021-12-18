@@ -1,0 +1,780 @@
+SQL> SET ECHO ON;
+SQL> --AGYEMANG ERIC
+SQL> --IT 478 ADVANCED DATABASE PROCESSING
+SQL> -- FINAL EXAMS  Part 2
+SQL> 
+SQL> --14.Write a procedure to grant user IT47822 SELECT, INSERT, UPDATE, and DELETE privileges on the SETS, COLORS and THEMES table.
+SQL> 
+SQL> 
+SQL> --Procedure to grant user IT47822 privileges on the SETS table
+SQL> 
+SQL> CREATE OR REPLACE PROCEDURE grant_user_priv_sets
+  2  (
+  3   sets VARCHAR2
+  4  )
+  5  AS
+  6  BEGIN
+  7     EXECUTE IMMEDIATE 'GRANT SELECT, INSERT, UPDATE, DELETE ON sets TO IT47822';
+  8     EXCEPTION
+  9     WHEN OTHERS THEN
+ 10      NULL;
+ 11  END;
+
+Procedure GRANT_USER_PRIV_SETS compiled
+
+SQL> call grant_user_priv_sets('SETS')
+
+Call completed.
+
+SQL> --Procedure to grant user IT47822 privileges on the COLORS table
+SQL> CREATE OR REPLACE PROCEDURE grant_user_priv_colors
+  2  (
+  3   colors VARCHAR2
+  4  )
+  5  AS
+  6  BEGIN
+  7     EXECUTE IMMEDIATE 'GRANT SELECT, INSERT, UPDATE, DELETE ON colors TO IT47822';
+  8     EXCEPTION
+  9     WHEN OTHERS THEN
+ 10      NULL;
+ 11  END;
+
+Procedure GRANT_USER_PRIV_COLORS compiled
+
+SQL> call grant_user_priv_colors('COLORS')
+
+Call completed.
+
+SQL> --Procedure to grant user IT47822 privileges on the THEMES table.
+SQL> CREATE OR REPLACE PROCEDURE grant_user_priv_themes
+  2  (
+  3   themes VARCHAR2
+  4  )
+  5  AS
+  6  BEGIN
+  7     EXECUTE IMMEDIATE 'GRANT SELECT, INSERT, UPDATE, DELETE ON themes TO IT47822';
+  8     EXCEPTION
+  9     WHEN OTHERS THEN
+ 10      NULL;
+ 11  END;
+
+Procedure GRANT_USER_PRIV_THEMES compiled
+
+SQL> call grant_user_priv_themes('THEMES')
+
+Call completed.
+
+SQL> 
+SQL>  --15.Query the USER_TAB_PRIVS table to show only user IT47822�s privileges
+SQL> COLUMN TABLE_NAME FORMAT A20
+SQL> COLUMN GRANTEE FORMAT A20
+SQL> SELECT table_name, grantee, privilege
+  2  FROM USER_TAB_PRIVS
+  3  WHERE Grantee = 'IT47822';
+
+TABLE_NAME           GRANTEE              PRIVILEGE                               
+-------------------- -------------------- ----------------------------------------
+SETS                 IT47822              DELETE                                  
+SETS                 IT47822              INSERT                                  
+SETS                 IT47822              SELECT                                  
+SETS                 IT47822              UPDATE                                  
+COLORS               IT47822              DELETE                                  
+COLORS               IT47822              INSERT                                  
+COLORS               IT47822              SELECT                                  
+COLORS               IT47822              UPDATE                                  
+THEMES               IT47822              DELETE                                  
+THEMES               IT47822              INSERT                                  
+THEMES               IT47822              SELECT                                  
+
+TABLE_NAME           GRANTEE              PRIVILEGE                               
+-------------------- -------------------- ----------------------------------------
+THEMES               IT47822              UPDATE                                  
+
+12 rows selected. 
+
+SQL> --16.Write a procedure to revoke all user IT47822 privileges on the SETS table.
+SQL>  CREATE OR REPLACE PROCEDURE all_revok_user_priv
+  2  (
+  3   sets VARCHAR2
+  4  )
+  5  AS
+  6  BEGIN
+  7     EXECUTE IMMEDIATE 'REVOKE ALL ON sets FROM IT47822';
+  8     EXCEPTION
+  9     WHEN OTHERS THEN
+ 10      NULL;
+ 11  END;
+
+Procedure ALL_REVOK_USER_PRIV compiled
+
+SQL> call all_revok_user_priv('SETS')
+
+Call completed.
+
+SQL> --17.Query the USER_TAB_PRIVS table to show all privileges
+SQL>  COLUMN TABLE_NAME FORMAT A20
+SQL>  COLUMN GRANTEE FORMAT A20
+SQL>  SELECT table_name, grantee, privilege
+  2   FROM USER_TAB_PRIVS;
+
+TABLE_NAME           GRANTEE              PRIVILEGE                               
+-------------------- -------------------- ----------------------------------------
+STATE_CITY           IT47829              INSERT                                  
+BIN$fB5XqcuNTbKxjG9g IT47829              INSERT                                  
+22quiA==$0                                                                        
+
+BIN$ptfWJlrxR9CX4ehT IT47829              INSERT                                  
+kICpIw==$0                                                                        
+
+THEMES               IT47822              DELETE                                  
+COLORS               IT47822              DELETE                                  
+THEMES               IT47822              INSERT                                  
+COLORS               IT47822              INSERT                                  
+
+TABLE_NAME           GRANTEE              PRIVILEGE                               
+-------------------- -------------------- ----------------------------------------
+THEMES               IT47822              SELECT                                  
+COLORS               IT47822              SELECT                                  
+THEMES               IT47822              UPDATE                                  
+COLORS               IT47822              UPDATE                                  
+STATE_CITY           IT47827              SELECT                                  
+INVOICES             IT47801              SELECT                                  
+SHARKATTACKS         IT47801              SELECT                                  
+STATE_CITY           IT47828              INSERT                                  
+BIN$fB5XqcuNTbKxjG9g IT47828              INSERT                                  
+22quiA==$0                                                                        
+
+
+TABLE_NAME           GRANTEE              PRIVILEGE                               
+-------------------- -------------------- ----------------------------------------
+BIN$ptfWJlrxR9CX4ehT IT47828              INSERT                                  
+kICpIw==$0                                                                        
+
+T                    IT47828              SELECT                                  
+STATE_CITY           IT47828              SELECT                                  
+BIN$g2Gr8kvVSk6wVJo+ IT47828              SELECT                                  
+ejObqA==$0                                                                        
+
+BIN$fB5XqcuNTbKxjG9g IT47828              SELECT                                  
+22quiA==$0                                                                        
+
+
+TABLE_NAME           GRANTEE              PRIVILEGE                               
+-------------------- -------------------- ----------------------------------------
+BIN$B/T9x+zhRZm3K0OW IT47828              SELECT                                  
+E5dqfQ==$0                                                                        
+
+BIN$ptfWJlrxR9CX4ehT IT47828              SELECT                                  
+kICpIw==$0                                                                        
+
+IT47801              PUBLIC               INHERIT PRIVILEGES                      
+
+24 rows selected. 
+
+SQL>  --18.Query the proper systems table to show all constraints on the part_categories table.
+SQL> COLUMN OWNER FORMAT A15
+SQL> COLUMN CONSTRAINT_NAME FORMAT A20
+SQL> COLUMN CONSTRAINT_TYPE FORMAT A15
+SQL> COLUMN TABLE_NAME FORMAT A15
+SQL> COLUMN COLUMN_NAME FORMAT A20
+SQL> COLUMN SEARCH_CONDITION FORMAT A15
+SQL> COLUMN SEARCH_CONDITION_VC FORMAT A5
+SQL> COLUMN LAST_CHANGE FORMAt A20
+SQL> COLUMN INDEX_OWNER FORMAt A20
+SQL> COLUMN INDEX_NAME FORMAT A10
+SQL> -- Using * to display the output 
+SQL> SELECT *
+  2  FROM ALL_CONSTRAINTS
+  3  WHERE table_name = 'PART_CATEGORIES';
+
+OWNER           CONSTRAINT_NAME      CONSTRAINT_TYPE TABLE_NAME      SEARCH_CONDITIO SEARC R_OWNER                                                                                                                          R_CONSTRAINT_NAME                                                                                                                DELETE_RU STATUS   DEFERRABLE     DEFERRED  VALIDATED     GENERATED      BAD RELY LAST_CHANGE          INDEX_OWNER          INDEX_NAME INVALID VIEW_RELATED   ORIGIN_CON_ID
+--------------- -------------------- --------------- --------------- --------------- ----- -------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- --------- -------- -------------- --------- ------------- -------------- --- ---- -------------------- -------------------- ---------- ------- -------------- -------------
+IT47801         SYS_C00713393        P               PART_CATEGORIES                                                                                                                                                                                                                                                                                                   ENABLED  NOT DEFERRABLE IMMEDIATE VALIDATED     GENERATED NAME          28-NOV-21            IT47801              SYS_C00713                                    1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         393                                            
+
+
+SQL> -- using specific column names to display the output
+SQL> COLUMN OWNER FORMAT A15
+SQL> COLUMN CONSTRAINT_NAME FORMAT A20
+SQL> COLUMN CONSTRAINT_TYPE FORMAT A15
+SQL> COLUMN TABLE_NAME FORMAT A15
+SQL> COLUMN COLUMN_NAME FORMAT A20
+SQL> COLUMN SEARCH_CONDITION FORMAT A15
+SQL> COLUMN SEARCH_CONDITION_VC FORMAT A5
+SQL> COLUMN LAST_CHANGE FORMAt A20
+SQL> COLUMN INDEX_OWNER FORMAt A20
+SQL> COLUMN INDEX_NAME FORMAT A10
+SQL> 
+SQL> SELECT owner, constraint_name, constraint_type,table_name, index_name , last_change
+  2  FROM ALL_CONSTRAINTS 
+  3  WHERE TABLE_NAME='PART_CATEGORIES';
+
+OWNER           CONSTRAINT_NAME      CONSTRAINT_TYPE TABLE_NAME      INDEX_NAME LAST_CHANGE         
+--------------- -------------------- --------------- --------------- ---------- --------------------
+IT47801         SYS_C00713393        P               PART_CATEGORIES SYS_C00713 28-NOV-21           
+                                                                     393                            
+
+
+SQL>  --19.Create the query needed to answer: How may blue parts are there in the Lego data?
+SQL> SELECT COUNT(inventory_id) AS Numer_of_Blue_Parts
+  2  FROM  inventory_parts ip JOIN colors c ON ip.color_id =c.id
+  3  WHERE c.name = 'Blue';
+
+NUMER_OF_BLUE_PARTS
+-------------------
+              29857
+
+SQL>  --20.Create the query needed to answer: What are the newest sets in the Lego data?
+SQL> SELECT  year, name AS Newest_Set_Name, set_num AS Newest_set_num,  num_parts
+  2  FROM sets
+  3  where year = (select MAX(year) from sets);
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Assembly Square                                                                                                                                                                                                                                            10255-1                    4009
+      2017 Carousel                                                                                                                                                                                                                                                   10257-1                    2669
+      2017 Creative Builder Box                                                                                                                                                                                                                                       10703-1                     499
+      2017 Creative Box                                                                                                                                                                                                                                               10704-1                     900
+      2017 Blue Creative Box                                                                                                                                                                                                                                          10706-1                      78
+      2017 Red Creative Box                                                                                                                                                                                                                                           10707-1                      55
+      2017 Green Creative Box                                                                                                                                                                                                                                         10708-1                      66
+      2017 Orange Creative Box                                                                                                                                                                                                                                        10709-1                      60
+      2017 Demolition Site                                                                                                                                                                                                                                            10734-1                     162
+      2017 Police Truck Chase                                                                                                                                                                                                                                         10735-1                      90
+      2017 Anna & Elsa's Frozen Playground                                                                                                                                                                                                                            10736-1                      94
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Batman vs. Mr. Freeze                                                                                                                                                                                                                                      10737-1                      63
+      2017 Fire Patrol Suitcase                                                                                                                                                                                                                                       10740-1                     108
+      2017 Mia's Farm Suitcase                                                                                                                                                                                                                                        10746-1                     104
+      2017 Andrea and Stephanie's Beach Holiday                                                                                                                                                                                                                       10747-1                     141
+      2017 Miles' Space Adventures                                                                                                                                                                                                                                    10824-1                      23
+      2017 My First Number Train                                                                                                                                                                                                                                      10847-1                      19
+      2017 My First Plane                                                                                                                                                                                                                                             10849-1                      10
+      2017 My First Bird                                                                                                                                                                                                                                              10852-1                       7
+      2017 Sydney                                                                                                                                                                                                                                                     21032-1                     361
+      2017 Chicago                                                                                                                                                                                                                                                    21033-1                     444
+      2017 London                                                                                                                                                                                                                                                     21034-1                     467
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Solomon R. Guggenheim Museum&reg;                                                                                                                                                                                                                          21035-1                     744
+      2017 The Mushroom Island                                                                                                                                                                                                                                        21129-1                     247
+      2017 The Nether Railway                                                                                                                                                                                                                                         21130-1                     387
+      2017 The Ice Spikes                                                                                                                                                                                                                                             21131-1                     454
+      2017 The Jungle Temple                                                                                                                                                                                                                                          21132-1                     598
+      2017 The Witch Hut                                                                                                                                                                                                                                              21133-1                     502
+      2017 The Waterfall Base                                                                                                                                                                                                                                         21134-1                     729
+      2017 LEGO Ideas NASA Apollo Saturn V                                                                                                                                                                                                                            21309-1                    1969
+      2017 Hedgehog Storage                                                                                                                                                                                                                                           40171-1                     232
+      2017 Brick Calendar                                                                                                                                                                                                                                             40172-1                     278
+      2017 Iconic Chess Set                                                                                                                                                                                                                                           40174-1                    1450
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Romantic Valentine Picnic                                                                                                                                                                                                                                  40236-1                     126
+      2017 Easter Egg Hunt -2017                                                                                                                                                                                                                                      40237-1                     145
+      2017 Monthly Mini Model Build January 2017 - Narwhal                                                                                                                                                                                                            40239-1                      45
+      2017 Monthly Mini Model Build February 2017 - Raccoon                                                                                                                                                                                                           40240-1                      47
+      2017 Monthly Mini Model Build March 2017 - Platypus                                                                                                                                                                                                             40241-1                      36
+      2017 Fire Car                                                                                                                                                                                                                                                   30338-1                      32
+      2017 Police Helicopter                                                                                                                                                                                                                                          30351-1                      44
+      2017 Police Car                                                                                                                                                                                                                                                 30352-1                      50
+      2017 Hot Rod                                                                                                                                                                                                                                                    30354-1                      36
+      2017 Knighton Rider                                                                                                                                                                                                                                             30376-1                      42
+      2017 Motor Horse polybag                                                                                                                                                                                                                                        30377-1                      52
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Shrunken Headquarters                                                                                                                                                                                                                                      30378-1                      48
+      2017 Gymnastic Bar                                                                                                                                                                                                                                              30400-1                      26
+      2017 Emma's Pool Slide                                                                                                                                                                                                                                          30401-1                      45
+      2017 The Milano                                                                                                                                                                                                                                                 30449-1                      64
+      2017 Turtle                                                                                                                                                                                                                                                     30476-1                      33
+      2017 U-Wing Fighter                                                                                                                                                                                                                                             30496-1                      55
+      2017 The Mini Batmobile                                                                                                                                                                                                                                         30521-1                      68
+      2017 The Joker Battle Training                                                                                                                                                                                                                                  30523-1                      49
+      2017 The Mini Batwing                                                                                                                                                                                                                                           30524-1                      80
+      2017 Krypto Saves the Day                                                                                                                                                                                                                                       30546-1                      55
+      2017 Disco Batman - Tears of Batman                                                                                                                                                                                                                             30607-1                      13
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 R2-D2                                                                                                                                                                                                                                                      30611-1                      70
+      2017 Blue Express                                                                                                                                                                                                                                               31054-1                      71
+      2017 Red Racer                                                                                                                                                                                                                                                  31055-1                      72
+      2017 Mighty Dinosaurs                                                                                                                                                                                                                                           31058-1                     174
+      2017 Robo Explorer 1                                                                                                                                                                                                                                            31062-1                     205
+      2017 Beachside Vacation                                                                                                                                                                                                                                         31063-1                     275
+      2017 Seaplane Adventures                                                                                                                                                                                                                                        31064-1                     359
+      2017 Park Street Townhouse                                                                                                                                                                                                                                      31065-1                     565
+      2017 Space Shuttle Explorer                                                                                                                                                                                                                                     31066-1                     285
+      2017 Modular Poolside Holiday                                                                                                                                                                                                                                   31067-1                     352
+      2017 Modular Modern Home                                                                                                                                                                                                                                        31068-1                     386
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Modular Family Villa                                                                                                                                                                                                                                       31069-1                     728
+      2017 Turbo Track Racer                                                                                                                                                                                                                                          31070-1                     664
+      2017 Puffin                                                                                                                                                                                                                                                     3850031-1                    50
+      2017 Batman                                                                                                                                                                                                                                                     41585-1                      91
+      2017 Batgirl                                                                                                                                                                                                                                                    41586-1                      99
+      2017 Robin                                                                                                                                                                                                                                                      41587-1                     101
+      2017 The Joker                                                                                                                                                                                                                                                  41588-1                     151
+      2017 Captain America                                                                                                                                                                                                                                            41589-1                      79
+      2017 Iron Man                                                                                                                                                                                                                                                   41590-1                      96
+      2017 Black Widow                                                                                                                                                                                                                                                41591-1                     143
+      2017 The Hulk                                                                                                                                                                                                                                                   41592-1                      93
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Captain Jack Sparrow                                                                                                                                                                                                                                       41593-1                     109
+      2017 Captain Armando Salazar                                                                                                                                                                                                                                    41594-1                     118
+      2017 Belle                                                                                                                                                                                                                                                      41595-1                     139
+      2017 Beast                                                                                                                                                                                                                                                      41596-1                     116
+      2017 Ultralight Helicopter                                                                                                                                                                                                                                      42057-1                     199
+      2017 Stunt Bike                                                                                                                                                                                                                                                 42058-1                     140
+      2017 Stunt Truck                                                                                                                                                                                                                                                42059-1                     141
+      2017 Roadwork Crew                                                                                                                                                                                                                                              42060-1                     364
+      2017 Telehandler                                                                                                                                                                                                                                                42061-1                     259
+      2017 Container Yard                                                                                                                                                                                                                                             42062-1                     630
+      2017 BMW R 1200 GS Adventure                                                                                                                                                                                                                                    42063-1                     593
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Technic 40 year anniversary model (42057 + 42061 + 42063)                                                                                                                                                                                                  42063-40                    568
+      2017 Ocean Explorer                                                                                                                                                                                                                                             42064-1                    1326
+      2017 RC Tracked Racer                                                                                                                                                                                                                                           42065-1                     369
+      2017 Air Race Jet                                                                                                                                                                                                                                               42066-1                    1150
+      2017 Monthly Mini Model Build April 2017 - Chick                                                                                                                                                                                                                40242-1                      54
+      2017 Monthly Mini Model Build May 2017 - Racecar                                                                                                                                                                                                                40243-1                      52
+      2017 Monthly Mini Model Build June 2017 - Dragonfly                                                                                                                                                                                                             40244-1                      37
+      2017 Mini VW Beetle                                                                                                                                                                                                                                             40252-1                     141
+      2017 Friends Tic-Tac-Toe                                                                                                                                                                                                                                        40265-1                      58
+      2017 Berry's Kitchen                                                                                                                                                                                                                                            41143-1                      43
+      2017 Petite's Royal Stable                                                                                                                                                                                                                                      41144-1                      74
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Anna's Snow Adventure                                                                                                                                                                                                                                      41147-1                     153
+      2017 Elsa's Magical Ice Palace                                                                                                                                                                                                                                  41148-1                     700
+      2017 Naida's Gondola & the Goblin Thief                                                                                                                                                                                                                         41181-1                      67
+      2017 The Capture of Sophie Jones                                                                                                                                                                                                                                41182-1                     226
+      2017 The Goblin King's Evil Dragon                                                                                                                                                                                                                              41183-1                     338
+      2017 Aira's Airship & the Amulet Chase                                                                                                                                                                                                                          41184-1                     343
+      2017 Magic Rescue from the Goblin Village                                                                                                                                                                                                                       41185-1                     637
+      2017 Batgirl Batjet Chase                                                                                                                                                                                                                                       41230-1                     206
+      2017 Super Hero High School                                                                                                                                                                                                                                     41232-1                     711
+      2017 Lashina" Tank                                                                                                                                                                                                                                              41233-1                     142
+      2017 Bumblebee Helicopter                                                                                                                                                                                                                                       41234-1                     141
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Wonder Woman Dorm                                                                                                                                                                                                                                          41235-1                     186
+      2017 Puppy Championship                                                                                                                                                                                                                                         41300-1                     185
+      2017 Puppy Parade                                                                                                                                                                                                                                               41301-1                     145
+      2017 Puppy Pampering                                                                                                                                                                                                                                            41302-1                      45
+      2017 Puppy Playground                                                                                                                                                                                                                                           41303-1                      62
+      2017 Puppy Treats & Tricks                                                                                                                                                                                                                                      41304-1                      45
+      2017 Emma's Photo Studio                                                                                                                                                                                                                                        41305-1                      95
+      2017 Mia's Beach Scooter                                                                                                                                                                                                                                        41306-1                      79
+      2017 Olivia's Creative Lab                                                                                                                                                                                                                                      41307-1                      99
+      2017 Stephanie's Friendship Cakes                                                                                                                                                                                                                               41308-1                      94
+      2017 Andrea's Musical Duet                                                                                                                                                                                                                                      41309-1                      86
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Heartlake Gift Delivery                                                                                                                                                                                                                                    41310-1                     185
+      2017 Heartlake Pizzeria                                                                                                                                                                                                                                         41311-1                     287
+      2017 Heartlake Sports Center                                                                                                                                                                                                                                    41312-1                     327
+      2017 Heartlake Summer Pool                                                                                                                                                                                                                                      41313-1                     588
+      2017 Stephanie's House                                                                                                                                                                                                                                          41314-1                     623
+      2017 LEGO My Travel Companion                                                                                                                                                                                                                                   5004932                      36
+      2017 Animal - Beaver                                                                                                                                                                                                                                            53850016-1                   52
+      2017 Digger                                                                                                                                                                                                                                                     53850017-1                   56
+      2017 ATV Arrest                                                                                                                                                                                                                                                 60135-1                      47
+      2017 Police Starter Set                                                                                                                                                                                                                                         60136-1                      80
+      2017 Tow Truck Trouble                                                                                                                                                                                                                                          60137-1                     144
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 High-speed Chase                                                                                                                                                                                                                                           60138-1                     297
+      2017 Mobile Command Center                                                                                                                                                                                                                                      60139-1                     373
+      2017 Bulldozer Break-In                                                                                                                                                                                                                                         60140-1                     558
+      2017 Police Station                                                                                                                                                                                                                                             60141-1                     893
+      2017 Money Transporter                                                                                                                                                                                                                                          60142-1                     137
+      2017 Auto Transport Heist                                                                                                                                                                                                                                       60143-1                     402
+      2017 Race Plane                                                                                                                                                                                                                                                 60144-1                      88
+      2017 Buggy                                                                                                                                                                                                                                                      60145-1                      80
+      2017 Stunt Truck                                                                                                                                                                                                                                                60146-1                      90
+      2017 Fishing Boat                                                                                                                                                                                                                                               60147-1                     125
+      2017 ATV Race Team                                                                                                                                                                                                                                              60148-1                     238
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 4x4 with Catamaran                                                                                                                                                                                                                                         60149-1                     197
+      2017 Pizza Van                                                                                                                                                                                                                                                  60150-1                     249
+      2017 Dragster Transporter                                                                                                                                                                                                                                       60151-1                     334
+      2017 Sweeper & Excavator                                                                                                                                                                                                                                        60152-1                     298
+      2017 Jungle Halftrack Mission                                                                                                                                                                                                                                   60159-1                     378
+      2017 Jungle Mobile Lab                                                                                                                                                                                                                                          60160-1                     423
+      2017 King's Guard Artillery                                                                                                                                                                                                                                     70347-1                      98
+      2017 Lance's Twin Jouster                                                                                                                                                                                                                                       70348-1                     215
+      2017 Ruina's Lock & Roller                                                                                                                                                                                                                                      70349-1                     200
+      2017 The Three Brothers                                                                                                                                                                                                                                         70350-1                     266
+      2017 Clay's Falcon Fighter Blaster                                                                                                                                                                                                                              70351-1                     520
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Jestro's Headquarters                                                                                                                                                                                                                                      70352-1                     816
+      2017 Aaron's Stone Destroyer                                                                                                                                                                                                                                    70358-1                     245
+      2017 Lance vs. lightning                                                                                                                                                                                                                                        70359-1                     252
+      2017 Battle Suit Clay                                                                                                                                                                                                                                           70362-1                      79
+      2017 Battle Suit Macy                                                                                                                                                                                                                                           70363-1                      66
+      2017 Battle Suit Aaron                                                                                                                                                                                                                                          70364-1                      80
+      2017 Battle Suit Axl                                                                                                                                                                                                                                            70365-1                      87
+      2017 Battle Suit Lance                                                                                                                                                                                                                                          70366-1                      83
+      2017 Combo NEXO Powers Wave 1                                                                                                                                                                                                                                   70372-1                       5
+      2017 The Vermillion Attack                                                                                                                                                                                                                                      70621-1                      75
+      2017 Desert Lightning                                                                                                                                                                                                                                           70622-1                     192
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Destiny's Shadow                                                                                                                                                                                                                                           70623-1                     344
+      2017 Vermillion Invader                                                                                                                                                                                                                                         70624-1                     304
+      2017 Samurai VXL                                                                                                                                                                                                                                                70625-1                     414
+      2017 Dawn of Iron Doom                                                                                                                                                                                                                                          70626-1                     680
+      2017 Dragon's Forge                                                                                                                                                                                                                                             70627-1                    1118
+      2017 The Joker Balloon Escape                                                                                                                                                                                                                                   70900-1                     123
+      2017 Mr. Freeze Ice Attack                                                                                                                                                                                                                                      70901-1                     195
+      2017 Catwoman Catcycle Chase                                                                                                                                                                                                                                    70902-1                     138
+      2017 The Riddler Riddle Racer                                                                                                                                                                                                                                   70903-1                     253
+      2017 Clayface Splat Attack                                                                                                                                                                                                                                      70904                         0
+      2017 Clayface" Splat Attack                                                                                                                                                                                                                                     70904-1                     448
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 The Batmobile                                                                                                                                                                                                                                              70905-1                     580
+      2017 LEGO® Batman Movie - The Joker™ Notorious Lowrider                                                                                                                                                                                                      70906                         0
+      2017 The Joker" Notorious Lowrider                                                                                                                                                                                                                              70906-1                     431
+      2017 Killer Croc Tail-Gator                                                                                                                                                                                                                                     70907-1                     459
+      2017 The Scuttler                                                                                                                                                                                                                                               70908-1                     774
+      2017 Batcave Break-in                                                                                                                                                                                                                                           70909-1                    1042
+      2017 Scarecrow" Special Delivery                                                                                                                                                                                                                                70910-1                     203
+      2017 The Penguin™ Arctic Roller                                                                                                                                                                                                                               70911-1                     304
+      2017 Arkham Asylum                                                                                                                                                                                                                                              70912-1                    1621
+      2017 Scarecrow" Fearful Face-off                                                                                                                                                                                                                                70913-1                     140
+      2017 Bane" Toxic Truck Attack                                                                                                                                                                                                                                   70914-1                     365
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Two-Face" Double Demolition                                                                                                                                                                                                                                70915-1                     563
+      2017 The Batwing                                                                                                                                                                                                                                                70916-1                    1052
+      2017 Lobster-Lovin’ Batman™                                                                                                                                                                                                                                71017-1                       7
+      2017 Pink Power Batgirl™                                                                                                                                                                                                                                      71017-10                      8
+      2017 Red Hood™                                                                                                                                                                                                                                                71017-11                      8
+      2017 The Eraser™                                                                                                                                                                                                                                              71017-12                      6
+      2017 Nurse Harley Quinn™                                                                                                                                                                                                                                      71017-13                      7
+      2017 Orca™                                                                                                                                                                                                                                                    71017-14                      5
+      2017 Zodiac Master™                                                                                                                                                                                                                                           71017-15                      6
+      2017 Catman™                                                                                                                                                                                                                                                  71017-16                      9
+      2017 March Harriet™                                                                                                                                                                                                                                           71017-17                      6
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 The Calculator™                                                                                                                                                                                                                                          71017-18                      8
+      2017 King Tut™                                                                                                                                                                                                                                                71017-19                      7
+      2017 Glam Metal Batman™                                                                                                                                                                                                                                       71017-2                       8
+      2017 The Mime™                                                                                                                                                                                                                                                71017-20                      7
+      2017 The LEGO Batman Movie Series - Complete                                                                                                                                                                                                                    71017-21                      0
+      2017 Fairy Batman™                                                                                                                                                                                                                                            71017-3                       8
+      2017 Clan of the Cave Batman™                                                                                                                                                                                                                                 71017-4                       7
+      2017 Vacation Batman™                                                                                                                                                                                                                                         71017-5                       8
+      2017 Barbara Gordon™                                                                                                                                                                                                                                          71017-6                       8
+      2017 Commissioner Gordon™                                                                                                                                                                                                                                     71017-7                       7
+      2017 The Joker™ – Arkham Asylum                                                                                                                                                                                                                             71017-8                       6
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Dick Grayson™                                                                                                                                                                                                                                            71017-9                       7
+      2017 Professional Surfer                                                                                                                                                                                                                                        71018-1                       6
+      2017 Battle Dwarf                                                                                                                                                                                                                                               71018-10                      9
+      2017 Retro Spaceman                                                                                                                                                                                                                                             71018-11                      7
+      2017 Yuppie                                                                                                                                                                                                                                                     71018-12                      8
+      2017 Rocket Boy                                                                                                                                                                                                                                                 71018-13                      7
+      2017 Dance Instructor                                                                                                                                                                                                                                           71018-14                      7
+      2017 Elf-Girl                                                                                                                                                                                                                                                   71018-15                      7
+      2017 Highwayman                                                                                                                                                                                                                                                 71018-16                      9
+      2017 Minifigures - Series 17 - Complete 16 Sets                                                                                                                                                                                                                 71018-17                      0
+      2017 LEGO Minifigures Series 17 - All Parts                                                                                                                                                                                                                     71018-18                    116
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Circus Strong Man                                                                                                                                                                                                                                          71018-2                       6
+      2017 Gourmet Chef                                                                                                                                                                                                                                               71018-3                       7
+      2017 Corn Cob Guy                                                                                                                                                                                                                                               71018-4                       5
+      2017 Veterinarian                                                                                                                                                                                                                                               71018-5                       6
+      2017 Hot Dog Man                                                                                                                                                                                                                                                71018-6                       9
+      2017 Butterfly Girl                                                                                                                                                                                                                                             71018-7                      10
+      2017 Roman Gladiator                                                                                                                                                                                                                                            71018-8                       6
+      2017 Connoisseur                                                                                                                                                                                                                                                71018-9                       7
+      2017 Silent Mary                                                                                                                                                                                                                                                71042-1                    2286
+      2017 Michael Knight and K.I.T.T. Knight Ryder Fun Pack                                                                                                                                                                                                          71286-1                      54
+      2017 Mercedes-AMG GT3                                                                                                                                                                                                                                           75877-1                     203
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Bugatti Chiron                                                                                                                                                                                                                                             75878-1                     181
+      2017 Scuderia Ferrari SF16-H                                                                                                                                                                                                                                    75879-1                     184
+      2017 McLaren 720S                                                                                                                                                                                                                                               75880-1                     160
+      2017 2016 Ford GT & 1966 Ford GT40                                                                                                                                                                                                                              75881-1                     366
+      2017 Ferrari FXX K & Development Center                                                                                                                                                                                                                         75882-1                     493
+      2017 MERCEDES AMG PETRONAS Formula One" Team                                                                                                                                                                                                                    75883-1                     940
+      2017 Mighty Micros: Superman™ vs. Bizarro™                                                                                                                                                                                                                  76068-1                      93
+      2017 Mighty Micros: Batman vs. Killer Moth                                                                                                                                                                                                                      76069-1                      83
+      2017 Mighty Micros: Wonder Woman vs. Doomsday                                                                                                                                                                                                                   76070-1                      85
+      2017 Mighty Micros: Spider-Man vs. Scorpion                                                                                                                                                                                                                     76071-1                      79
+      2017 Mighty Micros: Iron Man vs. Thanos                                                                                                                                                                                                                         76072-1                      94
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 Mighty Micros: Wolverine vs. Magneto                                                                                                                                                                                                                       76073-1                      84
+      2017 Wonder Woman" Warrior Battle                                                                                                                                                                                                                               76075-1                     285
+      2017 Captain America Jet Pursuit                                                                                                                                                                                                                                76076-1                     159
+      2017 Iron Man: Detroit Steel Strikes                                                                                                                                                                                                                            76077-1                     376
+      2017 Hulk vs. Red Hulk                                                                                                                                                                                                                                          76078-1                     374
+      2017 Ravager Attack                                                                                                                                                                                                                                             76079-1                     196
+      2017 Ayesha's Revenge                                                                                                                                                                                                                                           76080-1                     304
+      2017 The Milano vs. The Abilisk                                                                                                                                                                                                                                 76081-1                     456
+      2017 ATM Heist Battle                                                                                                                                                                                                                                           76082-1                     184
+      2017 Beware the Vulture                                                                                                                                                                                                                                         76083-1                     374
+      2017 Snowspeeder                                                                                                                                                                                                                                                75144-1                    1702
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 U-wing                                                                                                                                                                                                                                                     75160                       107
+      2017 U-wing                                                                                                                                                                                                                                                     75160-1                     108
+      2017 Tie Striker Microfighter                                                                                                                                                                                                                                   75161-1                      87
+      2017 Y-wing                                                                                                                                                                                                                                                     75162-1                      90
+      2017 Krennics Imperial Shuttle Microfighter                                                                                                                                                                                                                     75163-1                      77
+      2017 Rebel Trooper Battle Pack                                                                                                                                                                                                                                  75164-1                     119
+      2017 Imperial Trooper Battle Pack                                                                                                                                                                                                                               75165-1                     112
+      2017 First Order Transport Speeder Battle Pack                                                                                                                                                                                                                  75166-1                     115
+      2017 Bounty Hunter Speeder Bike" Battle Pack                                                                                                                                                                                                                    75167-1                     125
+      2017 Yoda's Jedi Starfighter                                                                                                                                                                                                                                    75168-1                     262
+      2017 Duel on Naboo                                                                                                                                                                                                                                              75169-1                     207
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 The Phantom                                                                                                                                                                                                                                                75170-1                     267
+      2017 Battle on Scarif                                                                                                                                                                                                                                           75171-1                     419
+      2017 Y-Wing Starfighter                                                                                                                                                                                                                                         75172-1                     688
+      2017 Luke's Landspeeder                                                                                                                                                                                                                                         75173-1                     148
+      2017 Desert Skiff Escape                                                                                                                                                                                                                                        75174-1                     284
+      2017 A-Wing Starfighter                                                                                                                                                                                                                                         75175-1                     356
+      2017 Jakku Quadjumper                                                                                                                                                                                                                                           75178-1                     455
+      2017 Rathtar" Escape                                                                                                                                                                                                                                            75180-1                     836
+      2017 Republic Fighter Tank                                                                                                                                                                                                                                      75182-1                     302
+      2017 Darth Vader" Transformation                                                                                                                                                                                                                                75183-1                     290
+      2017 Tracker I                                                                                                                                                                                                                                                  75185-1                     557
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 The Arrowhead                                                                                                                                                                                                                                              75186-1                     773
+      2017 Jedi Starfighter" With Hyperdrive                                                                                                                                                                                                                          75191-1                     831
+      2017 Scarif Stormtrooper                                                                                                                                                                                                                                        75523-1                      89
+      2017 Chirrut Îmwe                                                                                                                                                                                                                                              75524-1                      87
+      2017 Baze Malbus                                                                                                                                                                                                                                                75525-1                     147
+      2017 Stormtrooper" Commander                                                                                                                                                                                                                                    75531-1                      99
+      2017 Scout Trooper" & Speeder Bike                                                                                                                                                                                                                              75532-1                     447
+      2017 Elves Roblin Bag Charm                                                                                                                                                                                                                                     853648-1                      1
+      2017 NINJAGO Accessory Set                                                                                                                                                                                                                                      853687-1                     26
+      2017 Policeman and Crook Foil Pack                                                                                                                                                                                                                              CITY951701-1                 16
+      2017 Bear in Ice Cave foil pack                                                                                                                                                                                                                                 FR561701-1                   24
+
+      YEAR NEWEST_SET_NAME                                                                                                                                                                                                                                            NEWEST_SET_NUM        NUM_PARTS
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------
+      2017 The LEGO Batman Movie: Chaos in Gotham City                                                                                                                                                                                                                ISBN1338112120-1              6
+      2017 Flash Speeder                                                                                                                                                                                                                                              911618-1                     43
+      2017 Clay and Training Stand                                                                                                                                                                                                                                    NEX271712-1                  18
+      2017 Robin                                                                                                                                                                                                                                                      NEX271714-1                  19
+      2017 Kanan Jarrus foilpack                                                                                                                                                                                                                                      SW911719-1                    6
+      2017 The Ghost                                                                                                                                                                                                                                                  SW911720-1                   50
+      2017 TIE Advanced foil pack                                                                                                                                                                                                                                     SW911722-1                   26
+      2017 Vulture Droid foil pack                                                                                                                                                                                                                                    SW911723-1                   35
+      2017 A-Wing                                                                                                                                                                                                                                                     SW911724-1                   47
+      2017 Wishing Well                                                                                                                                                                                                                                               TRUFRIENDS-1                 33
+
+296 rows selected. 
+
+SQL> --21.Create the query needed to answer: What are the newest sets in the Lego data WITH a Star Wars theme?
+SQL> SELECT  year, s.name AS Set_Name, set_num, t.name AS theme_name
+  2  FROM sets s JOIN themes t ON s.theme_id = t.id 
+  3  where year = (SELECT MAX(year) from sets) AND t.name = 'Star Wars';
+
+      YEAR SET_NAME                                                                                                                                                                                                                                                   SET_NUM              THEME_NAME                                                                                                                                                                                                                                                
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      2017 TIE Advanced foil pack                                                                                                                                                                                                                                     SW911722-1           Star Wars                                                                                                                                                                                                                                                 
+      2017 Flash Speeder                                                                                                                                                                                                                                              911618-1             Star Wars                                                                                                                                                                                                                                                 
+      2017 Stormtrooper" Commander                                                                                                                                                                                                                                    75531-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Baze Malbus                                                                                                                                                                                                                                                75525-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Chirrut Îmwe                                                                                                                                                                                                                                              75524-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Scarif Stormtrooper                                                                                                                                                                                                                                        75523-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 The Arrowhead                                                                                                                                                                                                                                              75186-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Tracker I                                                                                                                                                                                                                                                  75185-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Jakku Quadjumper                                                                                                                                                                                                                                           75178-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 A-Wing Starfighter                                                                                                                                                                                                                                         75175-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Desert Skiff Escape                                                                                                                                                                                                                                        75174-1              Star Wars                                                                                                                                                                                                                                                 
+
+      YEAR SET_NAME                                                                                                                                                                                                                                                   SET_NUM              THEME_NAME                                                                                                                                                                                                                                                
+---------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      2017 Bounty Hunter Speeder Bike" Battle Pack                                                                                                                                                                                                                    75167-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 Y-wing                                                                                                                                                                                                                                                     75162-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 U-wing                                                                                                                                                                                                                                                     75160                Star Wars                                                                                                                                                                                                                                                 
+      2017 Snowspeeder                                                                                                                                                                                                                                                75144-1              Star Wars                                                                                                                                                                                                                                                 
+      2017 R2-D2                                                                                                                                                                                                                                                      30611-1              Star Wars                                                                                                                                                                                                                                                 
+
+16 rows selected. 
+
+SQL> --22.Find average number of pieces in each Lego set (by year) for the years 2010-2015. Order the results from highest to lowest
+SQL> SELECT year, ROUND(AVG(num_parts), 2) AS Average_number_of_pieces
+  2  FROM sets
+  3  GROUP BY year
+  4  HAVING year BETWEEN 2010 AND 2015
+  5  ORDER BY year DESC;
+
+      YEAR AVERAGE_NUMBER_OF_PIECES
+---------- ------------------------
+      2015                   201.67
+      2014                   169.72
+      2013                   181.34
+      2012                   149.77
+      2011                   160.09
+      2010                   210.43
+
+6 rows selected. 
+
+SQL> --23.Create the query needed to answer: Which year in the 1980�s had the most sets?
+SQL> SELECT year AS year_with_most_sets
+  2  FROM sets
+  3  GROUP BY year
+  4  HAVING COUNT(set_num) = (SELECT MAX(COUNT(*))
+  5  FROM sets
+  6  WHERE year BETWEEN 1980 AND 1989
+  7  GROUP BY year);
+
+YEAR_WITH_MOST_SETS
+-------------------
+               1987
+
+SQL> --24.Create the query needed to answer: Which theme was the most popular in the 1980�s?
+SQL> SELECT th.name AS most_popular_theme
+  2  FROM themes th JOIN sets st ON th.id = st.theme_id
+  3  WHERE year BETWEEN 1980 AND 1989
+  4  GROUP BY th.name
+  5  HAVING COUNT(th.name) =(SELECT MAX(COUNT(t.name))
+  6  FROM themes t JOIN sets s ON t.id = s.theme_id
+  7  WHERE year BETWEEN 1980 AND 1989
+  8  GROUP BY t.name);
+
+MOST_POPULAR_THEME                                                                                                                                                                                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Technic
+
+SQL> --25. Write a function that will give the number of days between a provided date and February 1, 2022. For example, if you provided the day 11/15/2021, your function should return 78. Use the dual table to test your function.
+SQL> CREATE OR REPLACE FUNCTION get_number_days
+  2  (
+  3  provided_date_param DATE
+  4  )
+  5  RETURN INTEGER
+  6  AS
+  7  number_of_days_between INTEGER;
+  8  
+  9  BEGIN 
+ 10  SELECT abs (TO_DATE('01-feb-2022') - provided_date_param) AS "Number of days"
+ 11  INTO 
+ 12  number_of_days_between 
+ 13  FROM DUAL;
+ 14  RETURN 
+ 15  number_of_days_between; 
+ 16  
+ 17  END;
+ 18  /
+
+Function GET_NUMBER_DAYS compiled
+
+SQL> SELECT get_number_days('15-nov-2021') AS "Number of days" FROM dual;
+
+Number of days
+--------------
+            78
+
+SQL> --Answer the following completely (in your own words)
+SQL> 
+SQL> --26. Explain the difference between procedure and trigger.
+SQL> --The difference is that a procedure is a database object that contains a block of PL/SQL code. A stored procedure can be used to modify the data that is stored within database. Example, it can 
+SQL> --be used to execute an INSERT, UPDATE, or DELETE statement. IF a procedure accepts more than one parameter, you must use a comma to separate each parameter. A trigger on the other 
+SQL> --hand is a named block of PL/SQL code that is executed or fired automatically when a particular type of SQL statement is executed. A trigger is fired mostly when an INSERT, UPDATE, or 
+SQL> --DELETE statement is executed on a table. IT is also possible to create a trigger that is fired when a DDL statement such as CREATE, ALTER, or DROP statement is executed.
+SQL> 
+SQL> 
+SQL> --27. What are the 3 types of parameters in a PL/SQL procedure?
+SQL> --They are 1) IN type parameter
+SQL>               --2) OUT type parameter
+SQL>               --3) IN OUT parameter
+SQL> --An IN formal parameter is initialized to the actual parameter with which it was called unless it was explicitly initialized with a default value.
+SQL> --A OUT formal parameter is initialized to the actual parameter with which it was called. The called program can reference and assign new values to the formal parameter.
+SQL> --An IN OUT formal parameter is initialized to the actual parameter with which it was called. It is modified by the called program, and the last value of the formal parameter is 
+SQL> --passed to the calling program�s actual parameter if the called program terminates without an exception. 
+SQL> 
+SQL> 
+SQL> 
+SQL> --28. What is the dual table?
+SQL> --This is a special one-row, one-column table present by default in oracle and other databases installations. In oracle, the table has a single VARCHAR2 column called 
+SQL> --DUMMY that has a value of �X�. It is suitable for use in selecting a pseudo column such as SYSDATE or USER.
+SQL> 
+SQL> 
+SQL> --29. Explain, the difference between a function, procedure, and package?
+SQL> --The difference is that a function always returns a value or a table. It cannot make change to the database such as executing an INSERT, UPDATE, or DELETE statement. You code the
+SQL> --return keyword followed by data type that�s returned by the function. A procedure on the other hand does not have any specific return type and doesn�t return single but multiple values. 
+SQL> --While a package is a schema object and it us responsible for grouping PL/SQL types, subprograms, and items, which are logically related. It is group of related procedures and functions, 
+SQL> --together with the cursors and variables they use, stored together in the database for continued use as a unit. 
+SQL> 
+SQL> 
+SQL> 
+SQL> --30. What is the difference between SQL and PL/SQL?
+SQL> --The difference is that SQL is a declaration language and can perform a single operation at a time, while PL/SQL is a procedural 
+SQL> --language and can execute multiple operations at the time.
+SQL> 
+SQL> 
+SQL> --31. What is the difference between row-level triggers and statement-level triggers?
+SQL> --The difference is that row-level triggers execute once for each row in a transaction and are the most common types of triggers; they are often used in data auditing applications.
+SQL> --A row-level trigger on the other hand is identified by the FOR EACH ROW clause in the CREATE TRIGGER command, while statement-level triggers execute once for each transaction. They are not often used 
+SQL> --for data-related activities; they are normally used to enforced additional security measures on the types of transactions that may be performed on a table. Statement-level triggers are
+SQL> --the default types of triggers created and are identified by omitting the FOR EACH ROW clause in the CREATE TRIGGER command. 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --32. What is the importance of %type and %rowtype data types in PL/SQL?
+SQL> --The %type helps us to declare a constant, variable, etc a same type as the previously declared variable or column type. It is used for anchoring for example-the variable emp_manager has 
+SQL> --same data type as the column manager_name in the table employee.
+SQL> 
+SQL> --A %rowtype is an attribute that helps us to declare a record that represents a row in the table. The fields of the row have same name and data types as column in the view. 
+SQL> --Example- dep_rec dept%ROWTYPE declares a record that can store an entire row for DEPT table.
+SQL> 
+SQL> 
+SQL> --33. What is the difference between rollback and rollback to statements in PL/SQL?
+SQL> --The difference is that a rollback statement makes a transaction completely undone where all the blocks are released while a rollback to statement makes a transaction undone but still
+SQL> --a SAVEPOINT. This means that the transaction remains live and active even after the command is implemented. 
+SQL> 
+SQL> 
+SQL> --34.What are the mandatory keywords in a PL/SQL program block?
+SQL> --They are DECLARE, BEGIN, EXCEPTION, and END
+SQL> 
+SQL> 
+SQL> --35.What is a bind variable and how is it used?
+SQL> --A bling variable is an SQL feature that makes us turn part of the query into a parameter. This parameter can be provided into the query when it is run, 
+SQL> --and the query is constructed and is executed. Bind variables on the other hand which is often called bind parameter or query parameters, are often used in WHERE clauses to filter data.
+SQL> --A bind variable can be used instead of putting the required-value into the query or writing separate queries for each different value or concatenating strings.

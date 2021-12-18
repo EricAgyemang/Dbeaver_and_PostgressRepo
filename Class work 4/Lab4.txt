@@ -1,0 +1,12 @@
+1. Watch the attached video.
+
+Then:
+
+2. Install SQL Developer on your local computer  (https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html)
+3. Log into your Oracle Account using the newly installed SQL Developer on your local computer.
+Send me an email (jrwolf@ilstu.edu).
+Subject: I got it to work
+
+4. Attach a screenshot of SQL Developer running  this SQL 
+SELECT * FROM dict;
+on your local computer.

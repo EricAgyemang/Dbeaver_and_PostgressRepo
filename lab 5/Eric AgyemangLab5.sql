@@ -1,0 +1,107 @@
+--Eric Agyemang
+-- IT 478 Advanced Database Processing
+-- Lab 5
+SET ECHO ON;
+--Question 1
+--1 List the states that Obama won in 2008 that Trump also won in 2016. USE INTERSECT
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'OBAMA' AND YEAR = '2008'
+INTERSECT
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'TRUMP' AND YEAR = '2016';
+
+
+--Question 2
+--2 List the states that Romney won in 2012 plus the states that Trump won in 2016. USE UNION
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'ROMNEY' AND YEAR = '2012'
+UNION
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'TRUMP' AND YEAR = '2016';
+
+
+
+--Question 3
+ --3 List the states McCain won in 2008 that Trump also won in 2016. USE UNION ALL
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'MCCAIN' AND YEAR = '2008'
+UNION ALL
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'TRUMP' AND YEAR = '2016';
+
+
+
+--Question 4
+--4 List the States that Obama won in 2008 that Clinton did not win in 2016. USE MINUS
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'OBAMA' AND YEAR = '2008'
+MINUS
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'CLINTON' AND YEAR = '2016';
+
+
+
+--Question 5
+--5 List the states that Obama won in 2012 plus the states that Obama won in 2008. USE UNION
+SELECT STATE
+FROM VOTE
+WHERE WINNER = 'OBAMA' AND YEAR = '2012'
+UNION
+SELECT STATE 
+FROM VOTE
+WHERE WINNER = 'OBAMA' AND YEAR = '2008';
+
+
+
+--Question 6
+--6 List states won democratic candidates (Obama and Clinton) won in all three elections (2008, 2012, 2016). USE 2 INTERSECTS.
+SELECT STATE 
+FROM VOTE
+WHERE WINNER ='OBAMA' AND YEAR='2008'
+INTERSECT
+SELECT STATE 
+FROM VOTE
+WHERE WINNER ='OBAMA' AND YEAR='2012'
+INTERSECT
+SELECT STATE 
+FROM VOTE
+WHERE WINNER='CLINTON' AND YEAR='2016';
+
+
+--Question 7
+--7 List the States that Obama won in 2008 and 2012, that Clinton did not win in 2016. USE WHATEVER YOU LIKE.
+SELECT STATE FROM VOTE
+WHERE WINNER ='OBAMA' AND YEAR='2008'
+INTERSECT
+SELECT STATE
+FROM VOTE
+WHERE WINNER ='OBAMA' AND YEAR='2012'
+MINUS
+SELECT STATE FROM VOTE
+WHERE WINNER='CLINTON' AND YEAR=2016;
+
+
+
+--Question 8
+ --8 List the States that Trump won in 2016 that Romney did not win in 2012. USE MINUS
+SELECT STATE 
+FROM VOTE
+WHERE WINNER='TRUMP' AND YEAR='2016'
+MINUS 
+SELECT STATE FROM VOTE
+WHERE WINNER='ROMNEY' AND YEAR='2012';
+
+
+
+
+
+
+

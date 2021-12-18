@@ -1,0 +1,37 @@
+Use the file iboats.sql (below) to create the tables and load the data needed for this assignment. There should be 2 tables created.
+
+-- 1 Do a LEFT OUTER JOIN on iship and iboats;
+
+-- 2 Do a RIGHT OUTER JOIN iboats and iships;
+
+-- 3 Do a FULL OUTER JOIN on iships and iboats;
+
+-- 4 try this query SELECT *
+
+FROM iships, iboats
+
+where iboats.SUB_ID(+) = iships.sub_id;
+
+-- 5 try this query SELECT *
+
+FROM iships, iboats
+
+where iboats.SUB_ID = iships.sub_id(+);
+
+-- 6 Do a RIGHT OUTER JOIN iships and iboats using ON...
+
+But only for NON-US ships
+BONUS Questions
+
+-- 7 Show all iboats and the number of ships they have sank.
+
+Even if the number is zero.
+
+-- 8 Show all subs and the number of ships they have sank.
+
+Only if they have sank  1 or more.
+
+FINAL STEP: Drop the iboats and iSHIPS Tables
+Submit both SQL, results and related rows/columns question answers via email to jrwolf@ilstu.edu
+
+SUBJECT: iboats

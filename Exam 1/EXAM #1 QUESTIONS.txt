@@ -1,0 +1,73 @@
+3, 5, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 22, 23, 26, 28
+29, 30
+
+Q3.Show first name, last name, city, state and whole years of service (no
+decimal places) for all employees--Order by last name ascending. Use only
+explicit joins.
+
+Q5. List the 3 youngest employees first name, last name, branch_name and
+division_name. Show first name, last name and whole years of age (no decimal
+places). (Show only three employees) Order by age descending. Use only
+implicit joins.
+
+Q6. List the 3 youngest employees first name, last name, branch_name and
+division_name. Show first name, last name and whole years of age (no decimal
+places). (Show only three employees) Order by age descending. Use only
+explicit joins.
+
+Q7. Show the first name, last name, branch_name and division_name and the age
+at hire of the 3 employees who were the oldest when they were hired (Show
+only three employees) Use only implicit joins.
+
+Q8. Show the first name, last name, branch_name and division_name and the age
+at hire of the 3 employees who were the oldest when they were hired (Show
+only three employees) Use only explicit joins.
+
+Q11. Show first name, last name, and date_awarded for all winners of the
+“Employee of the year” award. Use only natural joins.
+
+Q12. Show first name, last name, and date_awarded for all winners of the
+“Employee of the year” award. Use only implicit joins.
+
+Q14. Show first name and last name for all winners of BOTH the “Employee of
+the year” and "Best new employee" awards. Use only natural joins.
+
+Q15. Show first name, last name and award_desc for all winners of either the
+“Employee of the year” or "Best new employee" awards. Use INQ16. Show first name, last name and award_desc for all winners of either the
+“Employee of the year” or "Best new employee" awards. Use only natural joins.
+
+Q17. Show first name, last name and award_desc for all winners of either the
+“Employee of the year” or "Best new employee" awards. Use UNION.
+
+Q18. Show all employees last name, blog_desc and blog_url. If the employee
+does not have a blog, show "No Blog" in the blog_desc column and "NA" in the
+blog_url column.
+
+Q19. Show all employees last name, branch_name and division_name. If the
+employee does not have a branch_name or division_name, those columns should
+be blank.
+
+Q20. show all employees' first name and last name and the first name and last
+name of their project manager. If the employee does not have a project
+manager, the first name and last name of their project manager should be
+blank.
+
+Q22. Do a full outer join on the employees, emails and messages tables. Use
+on.
+
+Q23. Show the first name, last name, website_desc and blog_desc for all
+employees with either a website or a blog. Use UNION ALL. Results should have
+only three columns: first name, last name and "Website or Blog".
+
+Q26. Show first name and last name for all winners “Employee of the year”
+award that have not won the "Best new employee" award. Use MINUS.
+
+Q28. List the first name, last name and email_address for all employees with
+either a gmail or yahoo email address. Use an implicit join.
+
+Q29. List the first name, last name, city, state and email_address of all
+employees that live in Kansas (KS) and have a linkedup.com email account. Use
+using() for all joins.
+
+Q30. Show the first name, last name, and blog_desc for the blogs with the 2nd
+and 3rd highest hit counts.

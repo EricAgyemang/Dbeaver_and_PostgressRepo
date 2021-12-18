@@ -1,0 +1,23 @@
+IT478 Homework #1
+
+Load the attached data into Oracle and answer the problems below. 
+
+Submit a single PLAIN TEXT file with both code and answers to all problems. 
+
+Questions/problems:
+0. SET ECHO On; 
+1. List the captains (i.e., COMMANDER). Do not show any duplicates. 
+2. How many ships were damaged or destroyed in time between the times when the Australian and New Zealand ships were attacked? (NOT Required - But worth up to 3 points extra credit if on time and correct). 
+3. List the captains (i.e., COMMANDER) who have damaged or destroyed 4 or more ships.
+4. List the heaviest ship damaged or destroyed from each country.
+5. Show the uboat and name of ship attacked for the last attack in 1943.
+6. Show the uboat and name of ship for the 8th Canadian ship attacked.
+7. List the total tons of ship sunk or damaged for each of the 4 countries
+8. Which year did Canada have the most ships damaged or destroyed by u-boats? List the year and the number of ships. 
+9. List the Commander with the most British (BR) ships sunk or damaged - by the number of ships. 
+10. List the Commander with the most British ships sunk or damaged - by tons.
+11. Which year (1940-1944) had the LEAST British ships sunk or damaged - by tons. 
+12. List the number ships sunk or damaged by commanders with the first name of HEINRICH.
+13. List the total number of ships sunk or damaged for each of the 4 countries, order from least to greatest number of ships.
+14. List the last ship (by date) sunk or damaged for each of the 4 countries.
+15. List the commander with the last ship sunk or damaged in the war (by date).

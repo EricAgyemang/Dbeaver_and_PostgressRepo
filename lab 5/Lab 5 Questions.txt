@@ -1,0 +1,71 @@
+-- This is an ORACLE assignment
+-- Load the DDL for Vote table and data and then answer the questions below:
+
+-----------------------------------------------------------
+--  DDL for Table VOTE (Lab 5)
+-----------------------------------------------------------
+
+DROP TABLE VOTE;
+
+  CREATE TABLE "VOTE" 
+   (    "STATE" VARCHAR2(26), 
+    "YEAR" NUMBER(4,0), 
+    "WINNER" VARCHAR2(20) 
+   );
+
+Insert into VOTE (STATE,YEAR,WINNER) values ('California',2016,'CLINTON');
+Insert into VOTE (STATE,YEAR,WINNER) values ('California',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('California',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Florida',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Florida',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Florida',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Illinois',2016,'CLINTON');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Illinois',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Illinois',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Indiana',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Indiana',2012,'ROMNEY');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Indiana',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('North Carolina',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('North Carolina',2012,'ROMNEY');
+Insert into VOTE (STATE,YEAR,WINNER) values ('North Carolina',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Iowa',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Iowa',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Iowa',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Michigan',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Michigan',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Michigan',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('New York',2016,'CLINTON');
+Insert into VOTE (STATE,YEAR,WINNER) values ('New York',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('New York',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Ohio',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Ohio',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Ohio',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Pennsylvania',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Pennsylvania',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Pennsylvania',2008,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Texas',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Texas',2012,'ROMNEY');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Texas',2008,'MCCAIN');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Wisconsin',2016,'TRUMP');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Wisconsin',2012,'OBAMA');
+Insert into VOTE (STATE,YEAR,WINNER) values ('Wisconsin',2008,'OBAMA');
+
+COMMIT;
+
+--1 List the states that Obama won in 2008 that Trump also won in 2016. USE INTERSECT
+
+--2 List the states that Romney won in 2012 plus the states that Trump won in 2016. USE UNION
+
+--3 List the states McCain won in 2008 that Trump also won in 2016. USE UNION ALL
+
+--4 List the States that Obama won in 2008 that Clinton did not win in 2016. USE MINUS
+
+--5 List the states that Obama won in 2012 plus the states that Obama won in 2008. USE UNION
+
+--6 List states won democratic candidates (Obama and Clinton) won in all three elections (2008, 2012, 2016). USE 2 INTERSECTS.
+
+--7 List the States that Obama won in 2008 and 2012, that Clinton did not win in 2016. USE WHATEVER YOU LIKE.
+
+--8 List the States that Trump won in 2016 that Romney did not win in 2012. USE MINUS
+
+-- Post answers and SQL to ReggieNet (use SET ECHO ON;)

@@ -1,0 +1,7 @@
+1. Create a procedure that, when given a 2 character state abbreviation, and a population will change the state's population to the one provided.
+2. Create a function that, when given a 2 character state abbreviation, will return state's full name.
+3. Use the function that when given the 2-character abbreviation of a state will return the number of Sears stores closing in the state.
+4. Create a function that when given the 2-character abbreviation of a state will return the population of the state. 
+5. Create a function that, when given a brand, will return the total number of that brand's stores closing in the country.
+
+Submit SQL:

@@ -1,0 +1,58 @@
+Lab #3
+
+This lab will require you to connect to Oracle and execute simple queries using two different applications from the following list (all are free or have free trials).
+
+
+DataGrip
+DBeaver
+SQuirrel
+DbVisualizer
+
+
+For each of the 2 apps,
+1) show the setup via a screencast (any app you choose).
+
+2) Show the running of this query and the results via a screencast: 
+
+SELECT * FROM Subs;
+
+(DDL is below)
+Post all files here. Do not attach a zip file. 
+ 
+If you have any questions about any aspect of the assignment, ask.
+ 
+Please do not wait until the last minute to start this assignment, no extensions will be granted for any reason.
+ 
+
+--DDL for LAB#3
+DROP TABLE Subs; 
+DROP Table ships;
+
+
+CREATE TABLE Subs
+(SUB_ID varchar2(5))
+;
+
+INSERT ALL
+INTO Subs (SUB_ID) VALUES ('I-166')
+INTO Subs (SUB_ID) VALUES ('I-176')
+INTO Subs (SUB_ID) VALUES ('I-177')
+INTO Subs (SUB_ID) VALUES ('I-180')
+INTO Subs (SUB_ID) VALUES ('I-182')
+SELECT * FROM dual
+;
+
+CREATE TABLE ships
+(Ship varchar2(13), Country varchar2(2), SUB_ID varchar2(5))
+;
+
+INSERT ALL
+INTO ships (Ship, Country, SUB_ID) VALUES ('SS Fingal', 'NL', 'I-180') 
+INTO ships (Ship, Country, SUB_ID) VALUES ('AHS Centaur', 'AU', 'I-177') 
+INTO ships (Ship, Country, SUB_ID) VALUES ('HNLMS K XVI', 'NL', 'I-166') 
+INTO ships (Ship, Country, SUB_ID) VALUES ('USAT Liberty', 'US', 'I-166')
+INTO ships (Ship, Country, SUB_ID) VALUES ('USS Seadragon', 'US', NULL)
+SELECT * FROM dual
+;
+
+COMMIT;

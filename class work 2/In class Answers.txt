@@ -1,0 +1,203 @@
+SQL> 
+
+SQL> -- Part 1 -- 
+
+SQL> 
+
+SQL> -- Q1: 4 columns, 4 rows
+
+SQL> 
+
+SQL> SELECT * FROM ships sh, subs su WHERE sh.sub_id = su.sub_id;
+
+
+
+SHIP          CO SUB_I SUB_I
+
+------------- -- ----- -----
+
+USAT Liberty  US I-166 I-166
+
+HNLMS K XVI   NL I-166 I-166
+
+AHS Centaur   AU I-177 I-177
+
+SS Fingal     NL I-180 I-180
+
+
+
+SQL> 
+
+SQL> -- Q2: 4 columns, 4 rows
+
+SQL> 
+
+SQL> SELECT * FROM ships JOIN subs ON ships.sub_id = subs.sub_id;
+
+
+
+SHIP          CO SUB_I SUB_I
+
+------------- -- ----- -----
+
+USAT Liberty  US I-166 I-166
+
+HNLMS K XVI   NL I-166 I-166
+
+AHS Centaur   AU I-177 I-177
+
+SS Fingal     NL I-180 I-180
+
+
+
+SQL> 
+
+SQL> -- Q3: 3 columns, 4 rows
+
+SQL> 
+
+SQL> SELECT * FROM ships NATURAL JOIN subs;
+
+
+
+SUB_I SHIP          CO
+
+----- ------------- --
+
+I-166 USAT Liberty  US
+
+I-166 HNLMS K XVI   NL
+
+I-177 AHS Centaur   AU
+
+I-180 SS Fingal     NL
+
+
+
+SQL> 
+
+SQL> -- Q4: 3 colunms, 4 rows
+
+SQL> 
+
+SQL> SELECT * FROM ships INNER JOIN subs USING(sub_id);
+
+
+
+SUB_I SHIP          CO
+
+----- ------------- --
+
+I-166 USAT Liberty  US
+
+I-166 HNLMS K XVI   NL
+
+I-177 AHS Centaur   AU
+
+I-180 SS Fingal     NL
+
+
+
+SQL> 
+
+SQL> -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+SQL> 
+
+SQL> 
+
+SQL> -- Part 2 --
+
+SQL> 
+
+SQL> -- Q1: 
+
+SQL> 
+
+SQL> SELECT DISTINCT b.location FROM bears b, cubs c WHERE b.location = c.location;
+
+
+
+LOCATION     
+
+-------------
+
+Houston, TX
+
+Chicago, IL
+
+
+
+SQL> 
+
+SQL> -- Q2:
+
+SQL> 
+
+SQL> 
+
+SQL> 
+
+SQL> -- Q3: 6 columns, 2 rows
+
+SQL> 
+
+SQL> SELECT * FROM bears INNER JOIN cubs ON bears.location = cubs.location AND bears.day = cubs.day;
+
+
+
+DAY       LOCATION      OPPONEN DAY       LOCATION       VS       
+
+--------- ------------- ------- --------- -------------- ---------
+
+11-SEP-16 Houston, TX   Texans  11-SEP-16 Houston, TX    Astros   
+
+19-SEP-16 Chicago, IL   Eagles  19-SEP-16 Chicago, IL    Reds     
+
+
+
+SQL> 
+
+SQL> -- Q4: 4 columns, 2 rows 
+
+SQL> 
+
+SQL> SELECT * FROM bears JOIN cubs USING(location,day);
+
+
+
+LOCATION       DAY       OPPONEN VS       
+
+-------------- --------- ------- ---------
+
+Houston, TX    11-SEP-16 Texans  Astros   
+
+Chicago, IL    19-SEP-16 Eagles  Reds     
+
+
+
+SQL> 
+
+SQL> -- Q5: 4 columns, 2 rows
+
+SQL> 
+
+SQL> SELECT * FROM bears NATURAL JOIN cubs;
+
+
+
+DAY       LOCATION       OPPONEN VS       
+
+--------- -------------- ------- ---------
+
+11-SEP-16 Houston, TX    Texans  Astros   
+
+19-SEP-16 Chicago, IL    Eagles  Reds     
+
+
+
+SQL> 
+
+SQL> -- There are a different number of columns because while using NATURAL JOIN or USING, 
+
+SQL> -- it recognizes columns names are the same and only shows them once

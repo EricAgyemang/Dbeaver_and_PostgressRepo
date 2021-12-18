@@ -1,0 +1,47 @@
+
+CREATE TABLE VOTE
+    (STATE varchar(14), YEAR int, WINNER varchar(7))
+;
+    
+INSERT INTO VOTE
+    (STATE, YEAR, WINNER)
+VALUES
+    ('California', 2016, 'CLINTON'),
+    ('California', 2008, 'OBAMA'),
+    ('California', 2008, 'OBAMA'),
+    ('California', 2012, 'OBAMA'),
+    ('California', 2008, 'OBAMA'),
+    ('California', 2012, 'OBAMA'),
+    ('Florida', 2016, 'TRUMP'),
+    ('Florida', 2012, 'OBAMA'),
+    ('Florida', 2008, 'OBAMA'),
+    ('Illinois', 2016, 'CLINTON'),
+    ('Illinois', 2012, 'OBAMA'),
+    ('Illinois', 2008, 'OBAMA'),
+    ('Indiana', 2008, 'OBAMA'),
+    ('Indiana', 2012, 'ROMNEY'),
+    ('Indiana', 2016, 'TRUMP'),
+    ('North Carolina', 2008, 'OBAMA'),
+    ('North Carolina', 2012, 'ROMNEY'),
+    ('North Carolina', 2016, 'TRUMP'),
+    ('Iowa', 2016, 'TRUMP'),
+    ('Iowa', 2012, 'OBAMA'),
+    ('Iowa', 2008, 'OBAMA'),
+    ('Michigan', 2016, 'TRUMP'),
+    ('Michigan', 2012, 'OBAMA'),
+    ('Michigan', 2008, 'OBAMA'),
+    ('New York', 2016, 'CLINTON'),
+    ('New York', 2012, 'OBAMA'),
+    ('New York', 2008, 'OBAMA'),
+    ('Ohio', 2016, 'TRUMP'),
+    ('Ohio', 2012, 'OBAMA'),
+    ('Ohio', 2008, 'OBAMA'),
+    ('Pennsylvania', 2016, 'TRUMP'),
+    ('Pennsylvania', 2012, 'OBAMA'),
+    ('Pennsylvania', 2008, 'OBAMA'),
+    ('Texas', 2016, 'TRUMP'),
+    ('Texas', 2012, 'ROMNEY'),
+    ('Texas', 2008, 'MCCAIN'),
+    ('Wisconsin', 2016, 'TRUMP'),
+    ('Wisconsin', 2012, 'OBAMA'),
+    ('Wisconsin', 2008, 'OBAMA')

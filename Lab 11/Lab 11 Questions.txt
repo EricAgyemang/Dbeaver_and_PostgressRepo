@@ -1,0 +1,6 @@
+Create functions for each of the following:
+1. R – Runs scored: number of times a player crosses home plate.
+2. BB/K – Walk-to-strikeout ratio: number of bases on balls divided by number of strikeouts
+3. XBH – Extra-base hits: total hits greater than singles (2B + 3B + HR) NOTE: 2B = DOUBLE, 3B = TRIPLE
+4. TB – Total bases: one for each single, two for each double, three for each triple, and four for each home run [H + 2B + (2 × 3B) + (3 × HR)] or [1B + (2 × 2B) + (3 × 3B) + (4 × HR)] NOTE: 2B = DOUBLE, 3B = TRIPLE
+5. TOB – Times on base: times reaching base as a result of hits, walks, and hit-by-pitches (H + BB + HBP)

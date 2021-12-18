@@ -1,0 +1,16 @@
+
+Lab #6
+
+--INDIVIDUALLY create the PostgreSQL SQL to produce the desired results.  
+-- Submit a Word document with 8 screenshots: one screenshot for each question. 
+-- The screenshots should show both code and results. 
+
+-- Lab # 6 Questions
+--1 List the states that Obama won in 2012 that Clinton also won in 2016. Use intersect
+--2 List the states that Obama won in 2012 that Clinton also won in 2016. Use intersect ALL
+--3 List the states Obama won in 2008 that Clinton also won in 2016. Use Union All
+--4 List the candidate name and number of states won by Clinton and Trump in 2016 Use Union.
+--5 List the States that Obama won in 2008 that he did not win in 2012. Use except
+--6 List the States that Obama won in 2008 that he did not win in 2012. Use except ALL
+--7 List the States that Obama won in 2008 and 2012, that Clinton did not win in 2016.
+--8 List any States won by a different candidate in 2008, 2012 and 2016. That is a state that was won by 3 different candidates.

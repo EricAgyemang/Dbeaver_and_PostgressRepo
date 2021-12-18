@@ -1,0 +1,27 @@
+
+
+Part 1:
+-- Given the Ships and the Subs tables (see 090121.sql below), create the SQL to answer the following. Show the SQL and results and answer the related rows/column questions. 
+
+-- 1 Do an implicit join on ships and subs (i.e., using WHERE) How many columns and how many rows are in your answer?
+
+-- 2 Do an explicit inner join on ships and subs (i.e., using ON) How many columns and how many rows are in your answer?
+
+-- 3 Do a natural join on ships and subs How many columns and how many rows are in your answer? Why are the number of columns different than in 1 and 2 above? If you do not know, the answer can be found in my lectures and in the text.
+
+-- 4 Do an inner join on ships and subs USING(SUB_ID) How many columns and how many rows are in your answer? Why are the number of columns different than in 1 and 2 above? If you do not know, the answer can be found in my lectures and in the text.
+
+
+Part 2: 
+
+-- Given the Bears and the Cubs tables, answer the following:
+
+1. Find the cities that the teams have in common. List each city only one time in the results.
+
+2. Find all the cities the Cubs played in and the matching the cities that the Bears played in.
+
+3. Find the dates and cities when the Cubs and Bears played on the same day and in the same city -- use ON. How many columns and how many rows are in your answer?
+
+4. Redo #3 -- use USING. How many columns and how many rows are in your answer? Why are the number of columns different than in 3 above?
+
+5. Redo #3 -- use a NATURAL JOIN How many columns and how many rows are in your answer? Why are the number of columns different than in 3 above?

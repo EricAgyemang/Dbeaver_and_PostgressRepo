@@ -1,0 +1,22 @@
+HW #2 BASEBALL STATS:
+
+
+Steps:
+
+1: Load the data
+
+-- Procedure section
+
+2. Create a procedure that will add a column called HBP and populate the column with 0's for all players. Call your procedure using CALL.
+
+3. Create a procedure that will change the 0 in HBP to a 1 for Alex Gordon, Pablo Sandoval and Salvador Perez. Call your procedure using CALL.
+
+
+Function section
+
+Create a function which--when given the player's first and last name--will calculate and return the statistic using the data provided. Test your functions using the dual table.
+
+1. PA – Plate appearance: number of completed batting appearances
+2. K – Strike out (also abbreviated SO): number of times that a third strike is taken or swung at and missed, or bunted foul. 
+3. R – Runs scored: number of times a player crosses home plate
+4. TB – Total bases: one for each single, two for each double, three for each triple, and four for each home run [H + 2B + (2 × 3B) + (3 × HR)] or [1B + (2 × 2B) + (3 × 3B) + (4 × HR)] NOTE: 2B = DOUBLE, 3B = TRIPLE, and HR = HOME RUN
